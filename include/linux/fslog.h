@@ -9,6 +9,11 @@ int fslog_stlog(const char *fmt, ...);
 int fslog_selog(const char *fmt, ...);
 int fslog_kmsg_selog(const char *filter, int lines);
 
+/* deprecated function */
+#define SE_LOG(fmt, ...)
+#define fslog_selog(fmt, ...)
+#define fslog_kmsg_selog(filter, lines)
+
 #ifdef CONFIG_PROC_STLOG
 #define ST_LOG(fmt, ...) fslog_stlog(fmt, ##__VA_ARGS__)
 #define SE_LOG(fmt, ...) fslog_selog(fmt, ##__VA_ARGS__)
@@ -16,6 +21,5 @@ int fslog_kmsg_selog(const char *filter, int lines);
 #define ST_LOG(fmt, ...)
 #define SE_LOG(fmt, ...)
 #endif /* CONFIG_PROC_STLOG */
-
 
 #endif /* _FSLOG_H */
